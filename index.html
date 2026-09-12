@@ -342,6 +342,14 @@
 <p class="text-sm text-slate-600 leading-relaxed">
       转动蔚蓝星光轮盘抽取专属宠粉福利！点击「开始旋转」测试你和玉子大人的心动指数吧！
     </p>
+<div class="pt-1 flex items-center justify-center gap-2">
+<div class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200/90 text-sky-800 text-xs font-semibold shadow-xs" id="spins-counter-badge">
+<span class="material-symbols-outlined text-[15px] text-primary">toll</span>
+<span class="">今日剩余心动机会：</span>
+<span class="font-bold text-primary text-sm tracking-tight" id="spins-left-display">3</span>
+<span class="text-slate-500 text-[11px]" id="spins-total-display">/ 3 次</span>
+</div>
+</div>
 </div>
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 <!-- Left: Wheel Canvas Container -->
@@ -351,7 +359,13 @@
 <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
 <span class="">转盘状态：就绪 (Ready)</span>
 </div>
-<span class="text-slate-600" id="wheel-item-count">当前奖项: 6 项</span>
+<div class="flex items-center gap-2.5">
+<span class="px-2.5 py-0.5 rounded-full bg-sky-100/80 text-sky-800 font-semibold text-[11px]" id="wheel-item-count">当前奖项: 6 项</span>
+<span class="px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 font-semibold text-[11px] flex items-center gap-1" id="wheel-spins-status">
+<span class="material-symbols-outlined text-[13px] text-amber-600">stars</span>
+<span id="wheel-spins-status-text" class="">剩余 3 次</span>
+</span>
+</div>
 </div>
 <div class="relative flex items-center justify-center my-3">
 <div class="absolute -top-4 z-20 flex flex-col items-center pointer-events-none">
@@ -377,9 +391,24 @@
 <span class="material-symbols-outlined text-[18px]">stop</span>
 <span class="">立即停止</span>
 </button>
-<button class="px-4 py-2.5 rounded-full bg-sky-50 hover:bg-sky-100 text-sky-800 font-medium text-xs transition-colors" id="reset-wheel-btn" type="button">
-          重置预设
-        </button>
+<button class="px-4 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold text-xs shadow-md shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-1" id="wheel-support-unlock-btn" title="赞助玉子大人以解锁更多心动抽奖次数" type="button">
+<span class="material-symbols-outlined text-[16px]">volunteer_activism</span>
+<span class="">赞助解锁更多次数</span>
+</button>
+</div>
+<!-- Exhausted Toast / Notice Banner -->
+<div class="hidden mt-4 w-full p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-center transition-all animate-in fade-in duration-300" id="exhausted-notice">
+<div class="flex items-center justify-center gap-1.5 text-amber-800 font-bold text-xs">
+<span class="material-symbols-outlined text-[18px] text-amber-600">sentiment_satisfied</span>
+<span class="">今日免费心动抽奖次数已用完啦～</span>
+</div>
+<p class="text-xs text-slate-600 mt-1">需赞助支持玉子大人即可立即解锁更多心动抽奖次数！</p>
+<div class="flex items-center justify-center gap-2 mt-2.5">
+<button class="px-4 py-1.5 rounded-full bg-gradient-to-r from-primary to-sky-500 hover:from-blue-600 hover:to-sky-600 text-white font-semibold text-xs shadow-sm hover:scale-105 transition-transform flex items-center gap-1" id="exhausted-support-btn" type="button">
+<span class="material-symbols-outlined text-[14px]">volunteer_activism</span>
+<span class="">赞助解锁更多次数</span>
+</button>
+</div>
 </div>
 <div class="hidden mt-5 w-full p-4 rounded-2xl bg-gradient-to-r from-sky-50 via-blue-50 to-amber-50 border border-sky-200 text-center transition-all shadow-sm" id="result-toast">
 <div class="flex items-center justify-center gap-1 text-primary font-bold text-xs uppercase mb-0.5">
@@ -391,12 +420,12 @@
 </div>
 </div>
 <!-- Right: Prize Editor Console -->
-<div class="lg:col-span-5 flex flex-col rounded-3xl bg-white border border-sky-100 shadow-xl shadow-sky-900/5 p-4 sm:p-5"><div class="w-full rounded-2xl overflow-hidden bg-slate-50 border border-sky-100/80 flex items-center justify-center"><img alt="玉子大人 · 专属足踝银饰特写" class="w-full h-auto object-contain rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR4qtlz6GBJq6vW46chlE5ISL67i3g7p_RfDpXoyFseLtLJvpSXOHeC_HG3zumWJIHKq6pQYEC8nhsJ5PYeHVCqS7pZv092MUJ7y004svscEMyTjNbAOjj3JQxln7zTyC-Gy619wxXFq9JB3Y-qBIs9_UBXNb05BVtwTR1CYVl2k0dEBDkj6vVS42Zng3Yy3_JRqcaBG-ufupmkAshBmw_lA8ECHD_s_BAEP_rROuhK3tj4g87XHWh0406HJ_MWup8"></div><div class="pt-4 px-1 flex flex-col gap-1.5"><div class="flex items-center justify-between"><h3 class="font-display font-bold text-base text-slate-900">玉子大人 · 专属足踝银饰特写<span style="font-size: 1rem;">&nbsp;</span><span class="" style="font-size: 1rem;">·</span><span class="" style="font-size: 1rem;">&nbsp;扫码上贡</span></h3><span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-sky-50 border border-sky-200/70 text-sky-800">独家写真</span></div><p class="text-xs text-slate-600 leading-relaxed">银质流苏与足踝间的灵动光芒 · 心动心愿专属回馈展示</p></div></div>
+<div class="lg:col-span-5 flex flex-col rounded-3xl bg-white border border-sky-100 shadow-xl shadow-sky-900/5 p-4 sm:p-5"><div class="w-full rounded-2xl overflow-hidden bg-slate-50 border border-sky-100/80 flex items-center justify-center"><img alt="玉子大人 · 专属足踝银饰特写" class="w-full h-auto object-contain rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR4qtlz6GBJq6vW46chlE5ISL67i3g7p_RfDpXoyFseLtLJvpSXOHeC_HG3zumWJIHKq6pQYEC8nhsJ5PYeHVCqS7pZv092MUJ7y004svscEMyTjNbAOjj3JQxln7zTyC-Gy619wxXFq9JB3Y-qBIs9_UBXNb05BVtwTR1CYVl2k0dEBDkj6vVS42Zng3Yy3_JRqcaBG-ufupmkAshBmw_lA8ECHD_s_BAEP_rROuhK3tj4g87XHWh0406HJ_MWup8"></div><div class="pt-4 px-1 flex flex-col gap-1.5"><div class="flex items-center justify-between"><h3 class="font-display font-bold text-base text-slate-900">玉子大人 · 专属足踝银饰特写<span style="font-size: 1rem;">&nbsp;</span><span class="" style="font-size: 1rem;">·</span><span class="" style="font-size: 1rem;">&nbsp;扫码上贡</span></h3></div><p class="text-xs text-slate-600 leading-relaxed">银质流苏与足踝间的灵动光芒 · 心动心愿专属回馈展示</p></div></div>
 </div>
 </div>
 </section>
 <!-- Bottom Contact Strip Banner -->
-<section class="w-full px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-b from-white/90 via-sky-50/30 to-white/70 border-t border-sky-100 relative overflow-hidden" id="photo-gallery"><div class="max-w-7xl mx-auto space-y-8"><div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100/70 text-sky-800 text-xs font-bold uppercase tracking-wider mb-2"><span class="material-symbols-outlined text-[16px] text-sky-600">collections</span><span class="">PHOTO GALLERY · 写真特辑</span></div><h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">玉子大人的专属精选写真图集</h2><p class="text-sm text-slate-600 mt-1 leading-relaxed">定格夏日晴空下的每个心动细节 · 镜头特写与足踝银饰美学纪实</p></div><div class="flex flex-wrap items-center gap-2"><span class="px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-semibold shadow-sm cursor-pointer">全部写真 (13)</span><span class="px-3.5 py-1.5 rounded-full bg-white border border-sky-200 text-slate-700 hover:text-primary hover:border-sky-300 text-xs font-medium cursor-pointer transition-colors">足踝银饰系列</span><span class="px-3.5 py-1.5 rounded-full bg-white border border-sky-200 text-slate-700 hover:text-primary hover:border-sky-300 text-xs font-medium cursor-pointer transition-colors">晴空特写</span><span class="px-3.5 py-1.5 rounded-full bg-white border border-sky-200 text-slate-700 hover:text-primary hover:border-sky-300 text-xs font-medium cursor-pointer transition-colors">限定出镜</span></div></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="gallery-grid"><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="晶透水晶高跟清凉写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmS_1nJ9UskUU4hLpwV-zxHpjUTL21ToW1xqAAbQGb_vC429Ge08PElSlUXcZq7w2LKCi0kZ3Xt8QRGdozBmbBSQkBBDznztjTnSCL4axtSq15Py5PWk9AwwidmyHaBrLzCuNGteLIDYiKKhgtPS_pQSwPe7La0nyo4vKUINHj6Db3dZMu8uBiiiG5nTo_7PkAjsqM03SFM-x-dMAJCDdz2TJCEYnNI3gKaK7CPNbgfZpOvs3J6ld5scWvOJzV2KWU"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.01</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">晶透水晶高跟清凉写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">盛夏透明鞋履特写</span><span class="text-sky-600 font-medium ml-auto">4K高清</span></p></div></div><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="璀璨珍珠晶钻足链写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNA8JUUchBVF0ho6iHPV2OHr8Fe65zy0GUHK82sim1R8wNnKakcMoqKf1XF-7dVSt3vvDD6rDBuqEb1xdTnHRmUzSBaRxeaSilFB3aRXfWvYwGU8rgz8n3PbnJMYMdfHNJWofOO6wm0ibkLnSK-dipgxPEHAi5svXcmk8b5rnJM92-42ois1bkBdbgvgXD71cTa9_M788gkQEULgW9HbWVo3OMZoey5Qr447VuRB13tHxTLKsxUeT7mxVezqYU0B1B"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.02</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">璀璨珍珠晶钻足链写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">珍珠脚链与粉透微距</span><span class="text-sky-600 font-medium ml-auto">独家特辑</span></p></div></div><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="双色复古罗马钱币银饰足链" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5LX_DNyRpw_GXObmFaptwCFrQDIym7ZRCo-2B9qliKnlLfGH5UZl1ybFNWeYRfavyO7XwjEngBjaFzWknxZpleo8AJP6Wqpqy4vsD2QeqWzEoV2-CMr_wGzZjsIoMTUW2CLHy0hwQrk_E7rI60i8thjTVK6RpMBgn4zPdjC31qaZuzRN1enV1ELAAF_6NnhblxNce_17V-zzSRYKHqeI5nXeHW6Plmg7zqeAi5wQt6AhtfAgYlRwkMbdXSrheqFmW"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.03</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">双色复古罗马钱币银饰足链</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">金银双色流苏层叠纪实</span><span class="text-sky-600 font-medium ml-auto">典藏特辑</span></p></div></div><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="纯白花漾高跟鞋写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1VAA86bv8QrzNT8c61RclQ4UlLuA6OaX80DORctr1HjutzvMaz2VIMTcfa6L6Y1jS0J-VTAXSnMOhQ9HXNlTd4HLyiF5ufB4_0x1VsKHUUHDVEiXP6P2GYjzuXyEtdLgmeYeHsEMrhMHLWOqDUiOUfXhNi2fSVpVYWS3rotc6kyb-EuxWB3RcKRgsTETvb_q5EJKAoDH-vJqvLxEQbhh6xxuQTQtAZSdO7-WsbIWNe7FizfySf25lHLWxjJv-PwUs"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.04</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">纯白花漾高跟鞋写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">立体皮雕白花 · 细跟晴空典藏</span><span class="text-sky-600 font-medium ml-auto">4K高清</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="流光金币链饰足背特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFVoMSxYev4qdBK9t_YkAFTHZDruXDJ3ErbCt-m9f74XcSNyWMe_-8BWlWpA8snUBDnYH8D8AxTKG0wcgpa8EFAvSa8qGETLyu2hQmskOfVnnSt7kRN2tWaxU9cSZG0MWuJoY1HtfA5j94F2vQQzxzDbiwtd8I1ISTK_cv4WwUwPmht-CbGAzX3gaPYmfDJDkF28_z-fxXYoTrHFiGiWjZIKRgZV-w3ga1bFd2NlLOBmLEW8l4DL0o1Q_nChseHqNe"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.05</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">流光金币链饰足背特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">细金流苏与罗马雕纹</span><span class="text-sky-600 font-medium ml-auto">最新出镜</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="优雅珍珠晶钻连趾足链" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATWPYLxIUUUL1kWlNpbN14Vhlg_91ta77es-wnoiqu5M8XTpyOXavsWaLgONtDuAY1HbanOEkDZF-hvwslsmUsMENAB1msJK37IGRD7KAQzMqW0XBVUc6xUD0RhBC6XpM8wwd6An0oKj2KjaPh1RRIb1Xub9VrTx_mPpRAvy7SORbHBVd-MnWO4mAaJDGBcfL6NmkcTpctq7Z7L9QOOm5dEmmlg1AwDfimzCSguo3f6gttQKQ-Cpmps-MlrI-wj5BO"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.06</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">优雅珍珠晶钻连趾足链</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">圆润珍珠环绕 · 璀璨晶石点缀</span><span class="text-sky-600 font-medium ml-auto">全新特辑</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="珍珠晶钻足链特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOF4v2RnZOJLRuFabCL-bZCwH-ZO2nmlVc-tFK-M9VIahpUfAeW9T5hrZFIvOhjHL8fR5-bNdEUQJ-z-igBDGAfksIh7bt8jQsCf58YbIrdjGMqwDIkY8UlH6fpuVJ2kAhITnkJaUAFD9Y1c21QLjAys_vVs7BJtNjUD6BSZgGV9PsGL0to1j3eZ9mOfoJkvFvDzAmNvygHSUGWmiHLPSSVSu-acbgJZGsxek-rnklDDMWj5KPmoDVVrZRgthlt4J"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.07</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">珍珠晶钻足链特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">圆润珍珠配饰 · 水钻宝石流苏</span><span class="text-sky-600 font-medium ml-auto">独家特摄</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="素雅足踝线条特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRF5pZCQqpo4mD52-dNqrDp1peDJXyW6SQ9DRdCk6t5imK_0gUV-jvJvfN623nqRKJSFhxRxnDPObTMOJ9oyWXEegEjcRReoqJR683_WK6TH4RrLJwEiXSk-GIua3CpMB3Lo53DwYaV6FJxaH3bd45U07qBUOIuGGMQhqbFFlr-jA9UTrIXTFQh5czQ2uiZkxUA7rDIOKjBHmuqX-ZnJKfA45p-P_sWTvKCeqprLUOln6gfeHd0LZVwkQkYfReodnn"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.08</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">素雅足踝线条特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">自然室内柔光 · 纤巧戒环微点缀</span><span class="text-sky-600 font-medium ml-auto">微距写真</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="银色蝴蝶水钻凉鞋写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnDE_u3F55qty_yMQqS57HEvU73xHzwJ5fZlUbm6H7he94G-egVfF8WtkgwZ1L9EUFuracJuuPPc6qVxeBGPj2mEESH3TALKgCN9DnX0Do1BbT_l3N-bIxstimOjSBitEzEHhYDNJDK_VWB2CCiyEiGiNZIu0NsVlruuU2k0lC9A0WO2URbcLgXHnyZnado0Ym56UcX2J0r5xTrjorM5yvE7wKBpDuLJjV0CPahKmLeSyWEMPlmIxvX8MkpvdbJBQ1"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.09</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">银色蝴蝶水钻凉鞋写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">闪耀蝴蝶晶钻 · 珍珠系带高跟</span><span class="text-sky-600 font-medium ml-auto">华丽出镜</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="复古罗马银币流苏足链" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKOkcHIPOZEmcmcrJaigmVjjwluEg4SAMMrYltBl-T36fVjEKj1D7vQdwdrfpeliTDhy-05qTD7XqHmKgyv4F_wSIhSgI11A2HkbQQSXTh6X2fGBnsqSFzyIwd_urF3au2hNhWX87NDsoX-hGubeS37gH086KWXJwi9a57XluPPuJnmW5HLowuAZJ737OgmaF1BlgGqM2TXS5RooruKQ7JyKR2k1O6AfzzbuhMEWRcSEA-6TyFolIbfvSa1Du2R5lI"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.10</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">复古罗马银币流苏足链</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">多层银链垂坠 · 复古雕纹钱币</span><span class="text-sky-600 font-medium ml-auto">经典特写</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="粉色缎面厚底水钻凉鞋" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ6rJ9WRdOGbkeX4A1HwC_QC4VhOsgPhHOka0DVr88-Ibp_MYpgTyDvLp2ISPUj6UDcqoaNP7KdZE73GXwuSDJWj4_0DjucYTZj5RiCOUKJH2q_ZfMlKZVPNU6kK7-NrgxckBOwvfOW1QwEZa2TBCMCQysBLDjZ2qdhrcVOe41C1aH0KbxCCoQOim4Llcallxma7yaJd6ag7XmJLURspvp1w3e9YoILqrHkLfE3MDdlmV46wxFZTopcfVd2bnLgGVE"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.11</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">粉色缎面厚底水钻凉鞋</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">粉润缎面光泽 · 奢华字母晶钻</span><span class="text-sky-600 font-medium ml-auto">甜美限定</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="白皙透亮足背特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfy1sdm82tUzxSEsSXm16xuUoEURQB9a9AJDkV194O6q7-WZpjFrK9N77QQnhBWb8E5YS_TPiPzwVniqSbGgODr49WGF29La7z4QIMjTYgrk6E00s0RQlcrn5gVNeMd4o0ahM5n0UGqRXv9vxAlrkGZ88MoydNVGzgvxXemd-H_FZxP7DGfX6QSZVY__uN1yZPO_uKfvmj-9R3IgA4Ea9zVQlniRvheEBIdOQHNVpsByx70ZNN5jzvfTf39vpXUOW7"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.12</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">白皙透亮足背特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">自然晶莹通透 · 极致线条美学</span><span class="text-sky-600 font-medium ml-auto">纯净原片</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="珍珠脚链与足底特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC5EgU5GEfnxu9CMKnDzY_HuMDBW9OvNsLLNN_puhW8gEoGmsW42L7f7KUkeyMPH5J2BEHhod6S8sT2nIMxaCJmjQ9TkDTmFD5uNe-b5FRMDHJ9teAiHzQm9cEkgTWS-O_kqBsM5DPT0QXFqHU7Yd0wWH8kFkbp9pa1Ao61bvKjZ1zSkJoHRLpLUWtBorzs3P-zsdlvMNEAhh1h8_SYCrtQUbFPHh_Io-PfnElS2_ZJlhATexVWIJdC9ffAXPUNEJ_"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.13</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">珍珠脚链与足底特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">光泽珍珠扣环 · 细致美态刻画</span><span class="text-sky-600 font-medium ml-auto">限定回馈</span></p></div></div></div><div class="flex justify-center pt-2"><button class="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white hover:bg-sky-50 border border-sky-200 hover:border-primary/40 text-slate-700 hover:text-primary font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all duration-300" id="toggle-gallery-btn" type="button"><span class="w-6 h-6 rounded-full bg-sky-50 group-hover:bg-primary/10 flex items-center justify-center text-primary transition-colors"><span class="material-symbols-outlined text-[18px] transition-transform duration-300" id="toggle-gallery-icon">expand_more</span></span><span id="toggle-gallery-text" class="">查看更多写真 (展开剩余 9 张)</span></button></div></div></section><div class="w-full px-4 sm:px-6 lg:px-8 py-10 bg-white" id="contact-footer">
+<section class="w-full px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-b from-white/90 via-sky-50/30 to-white/70 border-t border-sky-100 relative overflow-hidden" id="photo-gallery"><div class="max-w-7xl mx-auto space-y-8"><div class="flex flex-col md:flex-row md:items-end justify-between gap-4"><div><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100/70 text-sky-800 text-xs font-bold uppercase tracking-wider mb-2"><span class="material-symbols-outlined text-[16px] text-sky-600">collections</span><span class="">PHOTO GALLERY · 写真特辑</span></div><h2 class="font-display font-extrabold text-2xl sm:text-3xl text-slate-900">玉子大人的专属精选写真图集</h2><p class="text-sm text-slate-600 mt-1 leading-relaxed">定格夏日晴空下的每个心动细节 · 镜头特写与足踝银饰美学纪实</p></div><div class="flex flex-wrap items-center gap-2"><span class="px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-semibold shadow-sm cursor-pointer">全部写真 (13)</span><span class="px-3.5 py-1.5 rounded-full bg-white border border-sky-200 text-slate-700 hover:text-primary hover:border-sky-300 text-xs font-medium cursor-pointer transition-colors">足踝银饰系列</span><span class="px-3.5 py-1.5 rounded-full bg-white border border-sky-200 text-slate-700 hover:text-primary hover:border-sky-300 text-xs font-medium cursor-pointer transition-colors">晴空特写</span><span class="px-3.5 py-1.5 rounded-full bg-white border border-sky-200 text-slate-700 hover:text-primary hover:border-sky-300 text-xs font-medium cursor-pointer transition-colors">限定出镜</span></div></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="gallery-grid"><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="晶透水晶高跟清凉写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmS_1nJ9UskUU4hLpwV-zxHpjUTL21ToW1xqAAbQGb_vC429Ge08PElSlUXcZq7w2LKCi0kZ3Xt8QRGdozBmbBSQkBBDznztjTnSCL4axtSq15Py5PWk9AwwidmyHaBrLzCuNGteLIDYiKKhgtPS_pQSwPe7La0nyo4vKUINHj6Db3dZMu8uBiiiG5nTo_7PkAjsqM03SFM-x-dMAJCDdz2TJCEYnNI3gKaK7CPNbgfZpOvs3J6ld5scWvOJzV2KWU"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.01</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">晶透水晶高跟清凉写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">盛夏透明鞋履特写</span><span class="text-sky-600 font-medium ml-auto">4K高清</span></p></div></div><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="璀璨珍珠晶钻足链写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNA8JUUchBVF0ho6iHPV2OHr8Fe65zy0GUHK82sim1R8wNnKakcMoqKf1XF-7dVSt3vvDD6rDBuqEb1xdTnHRmUzSBaRxeaSilFB3aRXfWvYwGU8rgz8n3PbnJMYMdfHNJWofOO6wm0ibkLnSK-dipgxPEHAi5svXcmk8b5rnJM92-42ois1bkBdbgvgXD71cTa9_M788gkQEULgW9HbWVo3OMZoey5Qr447VuRB13tHxTLKsxUeT7mxVezqYU0B1B"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.02</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">璀璨珍珠晶钻足链写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">珍珠脚链与粉透微距</span><span class="text-sky-600 font-medium ml-auto">独家特辑</span></p></div></div><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="双色复古罗马钱币银饰足链" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5LX_DNyRpw_GXObmFaptwCFrQDIym7ZRCo-2B9qliKnlLfGH5UZl1ybFNWeYRfavyO7XwjEngBjaFzWknxZpleo8AJP6Wqpqy4vsD2QeqWzEoV2-CMr_wGzZjsIoMTUW2CLHy0hwQrk_E7rI60i8thjTVK6RpMBgn4zPdjC31qaZuzRN1enV1ELAAF_6NnhblxNce_17V-zzSRYKHqeI5nXeHW6Plmg7zqeAi5wQt6AhtfAgYlRwkMbdXSrheqFmW"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.03</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">双色复古罗马钱币银饰足链</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">金银双色流苏层叠纪实</span><span class="text-sky-600 font-medium ml-auto">典藏特辑</span></p></div></div><div class="group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="纯白花漾高跟鞋写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1VAA86bv8QrzNT8c61RclQ4UlLuA6OaX80DORctr1HjutzvMaz2VIMTcfa6L6Y1jS0J-VTAXSnMOhQ9HXNlTd4HLyiF5ufB4_0x1VsKHUUHDVEiXP6P2GYjzuXyEtdLgmeYeHsEMrhMHLWOqDUiOUfXhNi2fSVpVYWS3rotc6kyb-EuxWB3RcKRgsTETvb_q5EJKAoDH-vJqvLxEQbhh6xxuQTQtAZSdO7-WsbIWNe7FizfySf25lHLWxjJv-PwUs"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.04</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">纯白花漾高跟鞋写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">立体皮雕白花 · 细跟晴空典藏</span><span class="text-sky-600 font-medium ml-auto">4K高清</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="流光金币链饰足背特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFVoMSxYev4qdBK9t_YkAFTHZDruXDJ3ErbCt-m9f74XcSNyWMe_-8BWlWpA8snUBDnYH8D8AxTKG0wcgpa8EFAvSa8qGETLyu2hQmskOfVnnSt7kRN2tWaxU9cSZG0MWuJoY1HtfA5j94F2vQQzxzDbiwtd8I1ISTK_cv4WwUwPmht-CbGAzX3gaPYmfDJDkF28_z-fxXYoTrHFiGiWjZIKRgZV-w3ga1bFd2NlLOBmLEW8l4DL0o1Q_nChseHqNe"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.05</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">流光金币链饰足背特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">细金流苏与罗马雕纹</span><span class="text-sky-600 font-medium ml-auto">最新出镜</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="优雅珍珠晶钻连趾足链" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATWPYLxIUUUL1kWlNpbN14Vhlg_91ta77es-wnoiqu5M8XTpyOXavsWaLgONtDuAY1HbanOEkDZF-hvwslsmUsMENAB1msJK37IGRD7KAQzMqW0XBVUc6xUD0RhBC6XpM8wwd6An0oKj2KjaPh1RRIb1Xub9VrTx_mPpRAvy7SORbHBVd-MnWO4mAaJDGBcfL6NmkcTpctq7Z7L9QOOm5dEmmlg1AwDfimzCSguo3f6gttQKQ-Cpmps-MlrI-wj5BO"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.06</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">优雅珍珠晶钻连趾足链</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">圆润珍珠环绕 · 璀璨晶石点缀</span><span class="text-sky-600 font-medium ml-auto">全新特辑</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="珍珠晶钻足链特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADOF4v2RnZOJLRuFabCL-bZCwH-ZO2nmlVc-tFK-M9VIahpUfAeW9T5hrZFIvOhjHL8fR5-bNdEUQJ-z-igBDGAfksIh7bt8jQsCf58YbIrdjGMqwDIkY8UlH6fpuVJ2kAhITnkJaUAFD9Y1c21QLjAys_vVs7BJtNjUD6BSZgGV9PsGL0to1j3eZ9mOfoJkvFvDzAmNvygHSUGWmiHLPSSVSu-acbgJZGsxek-rnklDDMWj5KPmoDVVrZRgthlt4J"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.07</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">珍珠晶钻足链特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">圆润珍珠配饰 · 水钻宝石流苏</span><span class="text-sky-600 font-medium ml-auto">独家特摄</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="素雅足踝线条特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRF5pZCQqpo4mD52-dNqrDp1peDJXyW6SQ9DRdCk6t5imK_0gUV-jvJvfN623nqRKJSFhxRxnDPObTMOJ9oyWXEegEjcRReoqJR683_WK6TH4RrLJwEiXSk-GIua3CpMB3Lo53DwYaV6FJxaH3bd45U07qBUOIuGGMQhqbFFlr-jA9UTrIXTFQh5czQ2uiZkxUA7rDIOKjBHmuqX-ZnJKfA45p-P_sWTvKCeqprLUOln6gfeHd0LZVwkQkYfReodnn"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.08</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">素雅足踝线条特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">自然室内柔光 · 纤巧戒环微点缀</span><span class="text-sky-600 font-medium ml-auto">微距写真</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="银色蝴蝶水钻凉鞋写真" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnDE_u3F55qty_yMQqS57HEvU73xHzwJ5fZlUbm6H7he94G-egVfF8WtkgwZ1L9EUFuracJuuPPc6qVxeBGPj2mEESH3TALKgCN9DnX0Do1BbT_l3N-bIxstimOjSBitEzEHhYDNJDK_VWB2CCiyEiGiNZIu0NsVlruuU2k0lC9A0WO2URbcLgXHnyZnado0Ym56UcX2J0r5xTrjorM5yvE7wKBpDuLJjV0CPahKmLeSyWEMPlmIxvX8MkpvdbJBQ1"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.09</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">银色蝴蝶水钻凉鞋写真</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">闪耀蝴蝶晶钻 · 珍珠系带高跟</span><span class="text-sky-600 font-medium ml-auto">华丽出镜</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="复古罗马银币流苏足链" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKOkcHIPOZEmcmcrJaigmVjjwluEg4SAMMrYltBl-T36fVjEKj1D7vQdwdrfpeliTDhy-05qTD7XqHmKgyv4F_wSIhSgI11A2HkbQQSXTh6X2fGBnsqSFzyIwd_urF3au2hNhWX87NDsoX-hGubeS37gH086KWXJwi9a57XluPPuJnmW5HLowuAZJ737OgmaF1BlgGqM2TXS5RooruKQ7JyKR2k1O6AfzzbuhMEWRcSEA-6TyFolIbfvSa1Du2R5lI"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.10</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">复古罗马银币流苏足链</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">多层银链垂坠 · 复古雕纹钱币</span><span class="text-sky-600 font-medium ml-auto">经典特写</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="粉色缎面厚底水钻凉鞋" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ6rJ9WRdOGbkeX4A1HwC_QC4VhOsgPhHOka0DVr88-Ibp_MYpgTyDvLp2ISPUj6UDcqoaNP7KdZE73GXwuSDJWj4_0DjucYTZj5RiCOUKJH2q_ZfMlKZVPNU6kK7-NrgxckBOwvfOW1QwEZa2TBCMCQysBLDjZ2qdhrcVOe41C1aH0KbxCCoQOim4Llcallxma7yaJd6ag7XmJLURspvp1w3e9YoILqrHkLfE3MDdlmV46wxFZTopcfVd2bnLgGVE"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.11</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">粉色缎面厚底水钻凉鞋</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">粉润缎面光泽 · 奢华字母晶钻</span><span class="text-sky-600 font-medium ml-auto">甜美限定</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="白皙透亮足背特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfy1sdm82tUzxSEsSXm16xuUoEURQB9a9AJDkV194O6q7-WZpjFrK9N77QQnhBWb8E5YS_TPiPzwVniqSbGgODr49WGF29La7z4QIMjTYgrk6E00s0RQlcrn5gVNeMd4o0ahM5n0UGqRXv9vxAlrkGZ88MoydNVGzgvxXemd-H_FZxP7DGfX6QSZVY__uN1yZPO_uKfvmj-9R3IgA4Ea9zVQlniRvheEBIdOQHNVpsByx70ZNN5jzvfTf39vpXUOW7"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.12</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">白皙透亮足背特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">自然晶莹通透 · 极致线条美学</span><span class="text-sky-600 font-medium ml-auto">纯净原片</span></p></div></div><div class="gallery-extra hidden group relative bg-white rounded-2xl p-2.5 border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-500/10 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between overflow-hidden"><div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-100"><img alt="珍珠脚链与足底特写" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC5EgU5GEfnxu9CMKnDzY_HuMDBW9OvNsLLNN_puhW8gEoGmsW42L7f7KUkeyMPH5J2BEHhod6S8sT2nIMxaCJmjQ9TkDTmFD5uNe-b5FRMDHJ9teAiHzQm9cEkgTWS-O_kqBsM5DPT0QXFqHU7Yd0wWH8kFkbp9pa1Ao61bvKjZ1zSkJoHRLpLUWtBorzs3P-zsdlvMNEAhh1h8_SYCrtQUbFPHh_Io-PfnElS2_ZJlhATexVWIJdC9ffAXPUNEJ_"><div class="absolute top-2 left-2 px-2 py-0.5 rounded-md bg-slate-950/60 backdrop-blur-sm text-[10px] font-semibold text-white">No.13</div></div><div class="pt-3 pb-1 px-1.5"><div class="flex items-center justify-between"><h4 class="font-bold text-sm text-slate-900 group-hover:text-primary transition-colors">珍珠脚链与足底特写</h4><span class="material-symbols-outlined text-[18px] text-sky-500 opacity-70 group-hover:opacity-100 transition-opacity">zoom_in</span></div><p class="text-[11px] text-slate-500 mt-1 flex items-center gap-2"><span class="">光泽珍珠扣环 · 细致美态刻画</span><span class="text-sky-600 font-medium ml-auto">限定回馈</span></p></div></div></div><div class="flex justify-center pt-2"><button class="group inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-white hover:bg-sky-50 border border-sky-200 hover:border-primary/40 text-slate-700 hover:text-primary font-semibold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all duration-300" id="toggle-gallery-btn" type="button"><span class="w-6 h-6 rounded-full bg-sky-50 group-hover:bg-primary/10 flex items-center justify-center text-primary transition-colors"><span class="material-symbols-outlined text-[18px] transition-transform duration-300" id="toggle-gallery-icon">expand_more</span></span><span class="" id="toggle-gallery-text">查看更多写真 (展开剩余 9 张)</span></button></div></div></section><div class="w-full px-4 sm:px-6 lg:px-8 py-10 bg-white" id="contact-footer">
 <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 p-6 rounded-2xl bg-gradient-to-r from-sky-50 via-blue-50 to-sky-100/70 border border-sky-200/80 shadow-sm">
 <div class="flex items-center gap-4 text-left">
 <div class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center shadow-md shadow-primary/20 shrink-0">
@@ -404,7 +433,6 @@
 </div>
 <div>
 <p class="font-display font-bold text-base text-slate-900">期待与你在下一片晴空相见 · QQ: 986474024</p>
-
 </div>
 </div>
 <div class="flex items-center flex-wrap gap-2.5">
@@ -438,7 +466,42 @@
 </footer>
 <!-- Tamako Support & Appreciation Modal -->
 <div class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300" id="tamako-support-modal">
-<div class="relative w-full max-w-lg rounded-3xl bg-white border border-sky-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200"><div class="absolute -top-6 -right-12 w-[620px] lg:w-[760px] aspect-square rounded-full transition-all duration-700 pointer-events-none" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCkyYfqb1fdKon-D3GlcuD-QY8o3ihEuNCeknyJv2jdXaJD4dMm0OMeWl7G5WdeCo2LlTsTMx4mZgePfsSw-NBU-EyIl-GJUgiRdJw8agzVptaV4sW1d87wf7tb7Ucjes6uKjuEPc2b58WqGn2wltTma2Q85XmTSPg-X5YKax9za0QceHNnB8s7DYR7ajcGpavPLbEJKezfmdKwKRC2DIvIWDR_BsfmjekW5iYhB36PiGTms29rxCMFarvdifhSDsO9&quot;); background-size: cover; background-position: center top; opacity: 0.42; mask-image: radial-gradient(circle at 60% 40%, rgb(0, 0, 0) 35%, rgba(0, 0, 0, 0) 80%); filter: drop-shadow(rgba(147, 197, 253, 0.35) 0px 0px 30px);"></div><div class="absolute top-1/3 -left-20 w-[540px] lg:w-[660px] aspect-square rounded-full pointer-events-none" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCyPjXUHPnGkBz8DO7VY_8f5lVQpV4PsgnzEx6mu5FXtER3VGS_V5r8qdpNnAK5edehdo_3NpCn1di3gI33M9nSAV4m7eDRoE1vmj6yj8uua-TzYvG2eF-bx1aihDgStTjVEvRO87DYBBB3uqWMb06Q3LmriHf17ecjWzoYZW0ipJNzlcsm4g2eKXPEyRrex2t_9baJeOzWHqPZPvUMWK1oATt9gNM1C8aD1OmCAZl1e-uGEyg7vaif7bSZOt3BiNA_&quot;); background-size: cover; background-position: center 20%; opacity: 0.38; mask-image: radial-gradient(circle at 45% 45%, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0) 78%); filter: drop-shadow(rgba(186, 230, 253, 0.35) 0px 0px 30px);"></div></div>
+<div class="relative w-full max-w-lg rounded-3xl bg-white border border-sky-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<!-- Modal Decorative Background Accents -->
+<div class="absolute -top-6 -right-12 w-[620px] lg:w-[760px] aspect-square rounded-full transition-all duration-700 pointer-events-none" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCkyYfqb1fdKon-D3GlcuD-QY8o3ihEuNCeknyJv2jdXaJD4dMm0OMeWl7G5WdeCo2LlTsTMx4mZgePfsSw-NBU-EyIl-GJUgiRdJw8agzVptaV4sW1d87wf7tb7Ucjes6uKjuEPc2b58WqGn2wltTma2Q85XmTSPg-X5YKax9za0QceHNnB8s7DYR7ajcGpavPLbEJKezfmdKwKRC2DIvIWDR_BsfmjekW5iYhB36PiGTms29rxCMFarvdifhSDsO9&quot;); background-size: cover; background-position: center top; opacity: 0.35; mask-image: radial-gradient(circle at 60% 40%, rgb(0, 0, 0) 35%, rgba(0, 0, 0, 0) 80%); filter: drop-shadow(rgba(147, 197, 253, 0.35) 0px 0px 30px);"></div>
+<div class="absolute top-1/3 -left-20 w-[540px] lg:w-[660px] aspect-square rounded-full pointer-events-none" style="background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuCyPjXUHPnGkBz8DO7VY_8f5lVQpV4PsgnzEx6mu5FXtER3VGS_V5r8qdpNnAK5edehdo_3NpCn1di3gI33M9nSAV4m7eDRoE1vmj6yj8uua-TzYvG2eF-bx1aihDgStTjVEvRO87DYBBB3uqWMb06Q3LmriHf17ecjWzoYZW0ipJNzlcsm4g2eKXPEyRrex2t_9baJeOzWHqPZPvUMWK1oATt9gNM1C8aD1OmCAZl1e-uGEyg7vaif7bSZOt3BiNA_&quot;); background-size: cover; background-position: center 20%; opacity: 0.32; mask-image: radial-gradient(circle at 45% 45%, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0) 78%); filter: drop-shadow(rgba(186, 230, 253, 0.35) 0px 0px 30px);"></div>
+<div class="relative z-10 p-6 sm:p-7 flex flex-col items-center text-center">
+<div class="w-full flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+<span class="text-xs font-bold text-slate-800 uppercase tracking-wide">玉子大人的专属赞助收款码</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors" id="close-support-modal-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<h3 class="font-display font-extrabold text-xl text-slate-900">支持玉子大人 · 专属赞助与投喂</h3>
+<p class="text-xs text-slate-600 mt-1 max-w-sm">
+微信扫一扫下方赞赏码，投喂玉子大人添置拍摄道具与服装。感谢每一份守护！
+</p>
+<div class="mt-4 p-3 rounded-2xl bg-white/95 border border-sky-200/80 shadow-lg flex flex-col items-center">
+<img alt="微信支付收款码 ¥52.00" class="w-56 h-auto sm:w-64 max-h-72 object-contain rounded-xl shadow-xs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAg3k2JagNWC7gX9dsORvvT6msIM78mZyA6RS4KQR2oUnJEDW5s4BPGur1kZpZ08K461-udLUCZ_UGFDEDRbltBUASC0ZdWsVcn6MtACTTT1r7GNxyJvM9LE9zOqfOYbewOQv7s4GHatYpAXcyxHeNtrRMeHJGTVl4RH7LPO03GdscoGEZpxRbamyuofXD30IRy5WbCvKdRSk3oO1bkLKjpvfsDD-EfsVQAcR-MsmrbMXwgPbdm7Z09xorQjEREBW_">
+<span class="mt-2 text-[11px] font-medium text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-500">check_circle</span>
+微信扫码支付 · 赞助专属回馈
+</span>
+</div>
+<div class="mt-5 w-full flex flex-col sm:flex-row gap-2.5">
+<button class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold text-xs shadow-md shadow-emerald-500/20 transition-all flex items-center justify-center gap-1.5 active:scale-95" id="confirm-sponsored-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">已完成赞助，解锁心动次数 (+3次)</span>
+</button>
+<button class="py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs transition-colors" id="modal-ack-btn" type="button">
+暂不解锁
+</button>
+</div>
+</div>
+</div>
 </div>
 <!-- Lucky Wheel Engine & Interactive Scripts -->
 <script>
@@ -466,6 +529,80 @@
     let spinSpeed = 0;
     let animFrameId = null;
     let stopping = false;
+
+    // Spins limit management (Default: 3 spins for visitors; sponsorship required for more)
+    const MAX_FREE_SPINS = 3;
+    const STORAGE_KEY = 'tamako_wheel_spins_today';
+    const DATE_KEY = 'tamako_wheel_date';
+
+    function getRemainingSpins() {
+      const today = new Date().toDateString();
+      const savedDate = localStorage.getItem(DATE_KEY);
+      if (savedDate !== today) {
+        localStorage.setItem(DATE_KEY, today);
+        localStorage.setItem(STORAGE_KEY, MAX_FREE_SPINS.toString());
+        return MAX_FREE_SPINS;
+      }
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved !== null ? parseInt(saved, 10) : MAX_FREE_SPINS;
+    }
+
+    let remainingSpins = getRemainingSpins();
+
+    const startBtn = document.getElementById('spin-start-btn');
+    const stopBtn = document.getElementById('spin-stop-btn');
+    const wheelSupportUnlockBtn = document.getElementById('wheel-support-unlock-btn');
+    const resultToast = document.getElementById('result-toast');
+    const resultName = document.getElementById('result-name');
+    const exhaustedNotice = document.getElementById('exhausted-notice');
+    const exhaustedSupportBtn = document.getElementById('exhausted-support-btn');
+
+    const spinsLeftDisplay = document.getElementById('spins-left-display');
+    const wheelSpinsStatusText = document.getElementById('wheel-spins-status-text');
+    const wheelSpinsStatus = document.getElementById('wheel-spins-status');
+
+    function updateSpinsUI() {
+      if (spinsLeftDisplay) {
+        spinsLeftDisplay.textContent = remainingSpins;
+      }
+      if (wheelSpinsStatusText) {
+        wheelSpinsStatusText.textContent = `剩余 ${remainingSpins} 次`;
+      }
+      if (wheelSpinsStatus) {
+        if (remainingSpins === 0) {
+          wheelSpinsStatus.className = 'px-2.5 py-0.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 font-semibold text-[11px] flex items-center gap-1';
+        } else {
+          wheelSpinsStatus.className = 'px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 font-semibold text-[11px] flex items-center gap-1';
+        }
+      }
+
+      if (remainingSpins <= 0) {
+        if (!isSpinning) {
+          if (startBtn) {
+            startBtn.disabled = true;
+            startBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          }
+          if (exhaustedNotice) {
+            exhaustedNotice.classList.remove('hidden');
+          }
+        }
+      } else {
+        if (!isSpinning && startBtn) {
+          startBtn.disabled = false;
+          startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+        if (exhaustedNotice) {
+          exhaustedNotice.classList.add('hidden');
+        }
+      }
+    }
+
+    function setSpins(count) {
+      remainingSpins = Math.max(0, count);
+      localStorage.setItem(STORAGE_KEY, remainingSpins.toString());
+      localStorage.setItem(DATE_KEY, new Date().toDateString());
+      updateSpinsUI();
+    }
 
     function drawWheel() {
       const numSlices = prizes.length;
@@ -506,105 +643,6 @@
       ctx.restore();
     }
 
-    const prizeContainer = document.getElementById('prize-list-container');
-    const prizeCountIndicator = document.getElementById('wheel-item-count');
-
-    function renderPrizeList() {
-      if (!prizeContainer) return;
-      prizeContainer.innerHTML = '';
-      if (prizeCountIndicator) {
-        prizeCountIndicator.textContent = `当前奖项: ${prizes.length} 项`;
-      }
-
-      prizes.forEach((prize, index) => {
-        const itemRow = document.createElement('div');
-        itemRow.className = 'flex items-center gap-2 p-2 rounded-xl bg-slate-50 border border-sky-100 hover:border-sky-200 transition-colors';
-        
-        const dot = document.createElement('span');
-        dot.className = 'w-3.5 h-3.5 rounded-full shrink-0 border border-white shadow-xs';
-        dot.style.backgroundColor = skyPalette[index % skyPalette.length];
-
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = prize;
-        input.className = 'flex-1 bg-transparent text-slate-800 text-xs font-medium focus:outline-none cursor-default';
-        input.readOnly = !document.body.classList.contains('admin-unlocked');
-        input.addEventListener('change', (e) => {
-          prizes[index] = e.target.value.trim() || `奖项 ${index + 1}`;
-        });
-
-        const delBtn = document.createElement('button');
-        delBtn.type = 'button';
-        delBtn.className = 'text-slate-400 hover:text-rose-500 transition-colors p-1 rounded del-prize-btn';
-        delBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">delete</span>';
-        delBtn.title = '删除此项';
-        delBtn.addEventListener('click', () => {
-          if (prizes.length <= 2) {
-            alert('心动转盘至少需要保留 2 个奖项噢！');
-            return;
-          }
-          prizes.splice(index, 1);
-          renderPrizeList();
-          drawWheel();
-        });
-
-        itemRow.appendChild(dot);
-        itemRow.appendChild(input);
-        itemRow.appendChild(delBtn);
-        prizeContainer.appendChild(itemRow);
-      });
-    }
-
-    const addPrizeBtn = document.getElementById('add-prize-btn');
-    const newPrizeInput = document.getElementById('new-prize-input');
-    if (addPrizeBtn && newPrizeInput) {
-      addPrizeBtn.addEventListener('click', () => {
-        const val = newPrizeInput.value.trim();
-        if (!val) return;
-        if (prizes.length >= 10) {
-          alert('为了保持扇面美观通透，建议奖项数量在 10 项以内～');
-          return;
-        }
-        prizes.push(val);
-        newPrizeInput.value = '';
-        renderPrizeList();
-        drawWheel();
-      });
-
-      newPrizeInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') addPrizeBtn.click();
-      });
-    }
-
-    const applyBtn = document.getElementById('apply-wheel-changes-btn');
-    if (applyBtn) {
-      applyBtn.addEventListener('click', () => {
-        drawWheel();
-        alert('转盘扇区数据已实时更新完成！');
-      });
-    }
-
-    const resetBtn = document.getElementById('reset-wheel-btn');
-    if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        prizes = [
-          '给玉子大人上贡30元',
-          '给玉子大人上贡52元',
-          '给玉子大人上贡131.4元',
-          '给玉子大人磕三个头',
-          '吸一口玉子大人的袜子',
-          '亲一下玉子大人的足底'
-        ];
-        renderPrizeList();
-        drawWheel();
-      });
-    }
-
-    const startBtn = document.getElementById('spin-start-btn');
-    const stopBtn = document.getElementById('spin-stop-btn');
-    const resultToast = document.getElementById('result-toast');
-    const resultName = document.getElementById('result-name');
-
     function animateSpin() {
       if (!isSpinning) return;
       currentRotation += spinSpeed;
@@ -616,11 +654,10 @@
           isSpinning = false;
           stopping = false;
           cancelAnimationFrame(animFrameId);
-          startBtn.disabled = false;
-          startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
           stopBtn.disabled = true;
           stopBtn.classList.add('cursor-not-allowed', 'text-slate-400');
           stopBtn.classList.remove('bg-rose-500', 'text-white', 'hover:bg-rose-600');
+          updateSpinsUI();
           calculatePrizeResult();
           return;
         }
@@ -648,6 +685,18 @@
     if (startBtn && stopBtn) {
       startBtn.addEventListener('click', () => {
         if (isSpinning || prizes.length === 0) return;
+
+        // Check Remaining Spins
+        if (remainingSpins <= 0) {
+          updateSpinsUI();
+          openModal();
+          alert('今日心动抽奖次数已用完！请赞助玉子大人以解锁更多心动好礼与抽奖次数～');
+          return;
+        }
+
+        // Deduct 1 Spin
+        setSpins(remainingSpins - 1);
+
         if (resultToast) resultToast.classList.add('hidden');
 
         isSpinning = true;
@@ -676,8 +725,8 @@
       });
     }
 
-    renderPrizeList();
     drawWheel();
+    updateSpinsUI();
 
     // Modal Control
     const supportModal = document.getElementById('tamako-support-modal');
@@ -687,6 +736,7 @@
     const closeSupportModalBtn = document.getElementById('close-support-modal-btn');
     const modalAckBtn = document.getElementById('modal-ack-btn');
     const footerSupportTriggers = document.querySelectorAll('.footer-support-trigger');
+    const confirmSponsoredBtn = document.getElementById('confirm-sponsored-btn');
 
     function openModal() {
       if (supportModal) {
@@ -704,29 +754,23 @@
     if (openSupportModalBtn) openSupportModalBtn.addEventListener('click', openModal);
     if (heroSupportBtn) heroSupportBtn.addEventListener('click', openModal);
     if (headerSupportBtn) headerSupportBtn.addEventListener('click', openModal);
+    if (wheelSupportUnlockBtn) wheelSupportUnlockBtn.addEventListener('click', openModal);
+    if (exhaustedSupportBtn) exhaustedSupportBtn.addEventListener('click', openModal);
     if (closeSupportModalBtn) closeSupportModalBtn.addEventListener('click', closeModal);
     if (modalAckBtn) modalAckBtn.addEventListener('click', closeModal);
     footerSupportTriggers.forEach(t => t.addEventListener('click', openModal));
 
-    if (supportModal) {
-      supportModal.addEventListener('click', (e) => {
-        if (e.target === supportModal) closeModal();
+    if (confirmSponsoredBtn) {
+      confirmSponsoredBtn.addEventListener('click', () => {
+        setSpins(remainingSpins + 3);
+        closeModal();
+        alert('🎉 感谢您对玉子大人的心意与赞助守护！已为您成功解锁 +3 次心动抽奖机会，快去测试今日欧气吧！');
       });
     }
 
-    // Copy Handlers
-    const copyModalQqBtn = document.getElementById('copy-modal-qq-btn');
-    const copyQqBtnText = document.getElementById('copy-qq-btn-text');
-    if (copyModalQqBtn) {
-      copyModalQqBtn.addEventListener('click', () => {
-        const qqNum = '986474024';
-        navigator.clipboard.writeText(qqNum).then(() => {
-          if (copyQqBtnText) copyQqBtnText.textContent = '已复制 QQ！';
-          setTimeout(() => {
-            if (copyQqBtnText) copyQqBtnText.textContent = '一键复制QQ';
-          }, 2000);
-          alert('玉子大人专属 QQ 号 ' + qqNum + ' 已成功复制到剪贴板！');
-        });
+    if (supportModal) {
+      supportModal.addEventListener('click', (e) => {
+        if (e.target === supportModal) closeModal();
       });
     }
 
@@ -741,110 +785,6 @@
     setupCopy('copy-email-card-btn', 'contact@tamako-visual.com', '商务联络邮箱已成功复制到剪贴板！');
     setupCopy('copy-bottom-mail-btn', 'contact@tamako-visual.com', '商务联络邮箱已成功复制到剪贴板！');
   })();
-</script>
-<!-- Admin Guard Logic -->
-<script>
-(function(){
-  let isAdminMode = false;
-  const authBox = document.getElementById('auth-box');
-  const passwordInput = document.getElementById('admin-password-input');
-  const unlockBtn = document.getElementById('unlock-admin-btn');
-  const authErrorMsg = document.getElementById('auth-error-msg');
-  const toggleAuthBtn = document.getElementById('toggle-auth-box-btn');
-  const adminBadge = document.getElementById('admin-status-badge');
-  const adminActionsContainer = document.getElementById('admin-actions-container');
-  const exitAdminBtn = document.getElementById('exit-admin-btn');
-  const adminBtnLabel = document.getElementById('admin-btn-label');
-
-  if (toggleAuthBtn && authBox) {
-    toggleAuthBtn.addEventListener('click', () => {
-      if (isAdminMode) {
-        exitAdminMode();
-      } else {
-        authBox.classList.toggle('hidden');
-        if (!authBox.classList.contains('hidden')) {
-          passwordInput.focus();
-        }
-      }
-    });
-  }
-
-  function verifyPassword() {
-    const val = passwordInput.value.trim();
-    if (val === '10086lsy') {
-      if (authErrorMsg) authErrorMsg.classList.add('hidden');
-      enterAdminMode();
-    } else {
-      if (authErrorMsg) authErrorMsg.classList.remove('hidden');
-      alert('密码错误，无权编辑！');
-    }
-  }
-
-  if (unlockBtn) unlockBtn.addEventListener('click', verifyPassword);
-  if (passwordInput) {
-    passwordInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') verifyPassword();
-    });
-  }
-
-  function enterAdminMode() {
-    isAdminMode = true;
-    document.body.classList.add('admin-unlocked');
-    if (authBox) authBox.classList.add('hidden');
-    passwordInput.value = '';
-    if (adminBadge) {
-      adminBadge.textContent = '博主管理中 (已解锁)';
-      adminBadge.className = 'text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200';
-    }
-    if (adminBtnLabel) adminBtnLabel.textContent = '退出管理';
-    if (adminActionsContainer) adminActionsContainer.classList.remove('hidden');
-    updateViewModeUI();
-  }
-
-  function exitAdminMode() {
-    isAdminMode = false;
-    document.body.classList.remove('admin-unlocked');
-    if (authBox) authBox.classList.remove('hidden');
-    if (adminBadge) {
-      adminBadge.textContent = '访客只读模式';
-      adminBadge.className = 'text-[10px] font-semibold px-2 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200/60';
-    }
-    if (adminBtnLabel) adminBtnLabel.textContent = '博主管理 (输入密码)';
-    if (adminActionsContainer) adminActionsContainer.classList.add('hidden');
-    updateViewModeUI();
-  }
-
-  if (exitAdminBtn) exitAdminBtn.addEventListener('click', exitAdminMode);
-
-  function updateViewModeUI() {
-    const prizeContainer = document.getElementById('prize-list-container');
-    if (!prizeContainer) return;
-    const inputs = prizeContainer.querySelectorAll('input');
-    inputs.forEach(input => {
-      input.readOnly = !isAdminMode;
-      if (!isAdminMode) {
-        input.classList.remove('bg-white', 'px-2', 'py-1', 'border', 'border-sky-200');
-        input.classList.add('cursor-default');
-      } else {
-        input.classList.add('bg-white', 'px-2', 'py-1', 'border', 'border-sky-200', 'rounded');
-        input.classList.remove('cursor-default');
-      }
-    });
-    const delBtns = prizeContainer.querySelectorAll('.del-prize-btn');
-    delBtns.forEach(btn => {
-      btn.style.display = isAdminMode ? 'inline-flex' : 'none';
-    });
-  }
-
-  const observer = new MutationObserver(() => {
-    updateViewModeUI();
-  });
-  const prizeContainer = document.getElementById('prize-list-container');
-  if (prizeContainer) {
-    observer.observe(prizeContainer, { childList: true });
-  }
-  updateViewModeUI();
-})();
 </script>
 <!-- Gallery Toggle Script -->
 <script>
